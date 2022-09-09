@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QHBoxLayout, QPushButton, QApplication
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QHBoxLayout, QPushButton, QApplication, QSizePolicy
 
 
 class FindReplaceWidget(QWidget):
@@ -10,10 +10,14 @@ class FindReplaceWidget(QWidget):
         findLineEdit = QLineEdit()
         replaceLineEdit = QLineEdit()
 
+        findLineEdit.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
+        replaceLineEdit.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
+
         lay = QVBoxLayout()
         lay.addWidget(findLineEdit)
         lay.addWidget(replaceLineEdit)
         lay.setContentsMargins(0, 0, 0, 0)
+        lay.setSpacing(0)
 
         lineEditWidget = QWidget()
         lineEditWidget.setLayout(lay)
@@ -73,3 +77,12 @@ class FindReplaceWidget(QWidget):
         lay.addWidget(rightBtnWidget)
 
         self.setLayout(lay)
+
+
+if __name__ == "__main__":
+    import sys
+
+    app = QApplication(sys.argv)
+    ex = FindReplaceWidget()
+    ex.show()
+    sys.exit(app.exec_())
