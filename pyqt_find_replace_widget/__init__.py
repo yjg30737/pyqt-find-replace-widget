@@ -1,0 +1,1 @@
+from pyqt_find_replace_widget.main import FindReplaceWidget
